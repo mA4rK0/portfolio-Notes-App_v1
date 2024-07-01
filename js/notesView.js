@@ -87,7 +87,13 @@ export default class NotesView {
     this.root.querySelector(".notes-body").value = note.body;
 
     this.root.querySelectorAll(".notes-list-item").forEach((noteListItem) => {
-      noteListItem.classList.remove(".notes-list-item--selected");
+      noteListItem.classList.remove("notes-list-item--selected");
     });
+
+    this.root.querySelector(`.notes-list-item[data-note-id="${note.id}"]`).classList.add("notes-list-item--selected");
+  }
+
+  updatePreview(visible) {
+    this.root.querySelector(".notes-preview").style.visibility = visible ? "visible" : "hidden";
   }
 }
